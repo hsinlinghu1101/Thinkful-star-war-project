@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import SearchForm from './SearchForm';
+import NameList from './NameList';
+
 import './App.css';
 
-function App() {
+
+class App extends React.Component {
+state ={
+  results:[]
+}
+
+getResult = (results) =>{
+  this.setState({results})
+}
+ render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className='App'>
+      <SearchForm showResult={this.getResult}/>
+      <NameList result={this.state.results}/>
+    </main>
   );
+ }
+  
 }
 
 export default App;
